@@ -1,129 +1,35 @@
-
-let mathOperation;
-let firstNumber;
-let secondNumber;
-let result;
-let history = [];
-let historyReverse = [];
+let question;
+const array = [];
+let element;
 do {
+    // const userQuestion = (function () {
+        do {
+            question = +prompt('How many elements elemetns do you want to the array (min 5; max 20)?');
+        } while (question < 5 || question > 20 || question !== question);
 
-    mathOperation = +prompt(`Select an operation you want to do:
-    for "Sum" put 1;
-    for "Diff" put 2;
-    for "Mult" put 3;
-    for "Div" put 4;
-    for "Pow" put 5;
-    for "Sin" put 6;
-    for "Cos" put 7;`);
+        do {
+            function elementsArray(array, element) {
+            for (let index = 0; index < question; index++) {
+                do {
+                    element = +prompt('Put arrow element');
+                } while (element !== element);
+                array[index] = element;
+            }
+                return array;
+            }
+        } while (element <= array.length);
+        elementsArray(array, element);
+    // })();
 
-
-if(mathOperation > 7 || mathOperation < 1 || mathOperation !== mathOperation) {
-    continue;
-}
-
-function notNanOperand (promptDesc) {
-    let result;
-    do {
-        result = +prompt(promptDesc)
-    } while (result !== result);
-    return result;
+function SelectionSort(A) {                             
+    var n = A.length; 
+    for (var i = 0; i < n-1; i++) 
+     { var min = i; 
+       for (var j = i+1; j < n; j++) 
+        { if (A[j] < A[min]) min = j; }  
+       var t = A[min]; A[min] = A[ i ]; A[ i ] = t; 
+     }                     
+    console.table(A) 
 };
-
-
-firstNumber = notNanOperand (mathOperation < 6 && mathOperation > 0 ? 'Please, enter your first number' : 'Please, enter your number');
-
-
-if (mathOperation < 6) {
-    secondNumber = notNanOperand('Please, enter your second number');
-};
-
-
-function sum (firstNumber, secondNumber) {
-    let result = firstNumber + secondNumber;
-    return result;
-}
-
-function diff (firstNumber, secondNumber) {
-    let result = firstNumber - secondNumber;
-    return result;
-}
-
-function mult (firstNumber, secondNumber) {
-    let result = firstNumber * secondNumber;
-    return result;
-}
-
-function div (firstNumber, secondNumber) {
-    let result = firstNumber / secondNumber;
-    return result;
-}
-
-function pow (firstNumber, secondNumber) {
-    let result = Math.pow(firstNumber, secondNumber);
-    return result;
-}
-
-function sin (firstNumber) {
-    let result = Math.sin(firstNumber);
-    return result;
-}
-
-function cos (firstNumber) {
-    let result = Math.cos(firstNumber);
-    return result;
-}
-
-switch (mathOperation) {
-    case 1:
-       result = sum(firstNumber, secondNumber);
-    break;
-    case 2: 
-        result = diff(firstNumber, secondNumber);
-    break;
-    case 3:
-        result = mult(firstNumber, secondNumber);
-    break;
-    case 4:
-        result = div(firstNumber, secondNumber);
-    break;
-    case 5:
-        result = pow(firstNumber, secondNumber);
-    break;
-    case 6:
-        result = sin(firstNumber);
-    break;
-    case 7:
-        result = cos(firstNumber);
-    break;
-    default: alert('Try again');
-        break;
-};
-
-let operName;
-if (mathOperation === 1) {
-    operName = 'sum';
-} else if (mathOperation === 2) {
-    operName = 'diff';
-} else if (mathOperation === 3) {
-    operName = 'mult';
-} else if(mathOperation === 4) {
-    operName = 'div';
-} else if(mathOperation === 5) {
-    operName = 'pow';
-} else if(mathOperation === 6) {
-    operName = 'sin';
-} else {
-    operName = 'cos';
-};
-
-function resultMessage(operName, result) {
-    alert(`Operation ${operName} finished with result ${result}.`)
-};
-resultMessage(operName, result);
-
-history.push(result);
-historyReverse = history;
-console.table(historyReverse.reverse(result));
-
-} while (confirm('Do You want to repeat?'));
-
+    SelectionSort(array);
+} while (confirm('Do you want to repeat?'));
