@@ -1,129 +1,92 @@
+let student = studentsMock.getStudent();
+let list = studentsMock.getStudentList(12);
 
-let mathOperation;
-let firstNumber;
-let secondNumber;
-let result;
-let history = [];
-let historyReverse = [];
-do {
-
-    mathOperation = +prompt(`Select an operation you want to do:
-    for "Sum" put 1;
-    for "Diff" put 2;
-    for "Mult" put 3;
-    for "Div" put 4;
-    for "Pow" put 5;
-    for "Sin" put 6;
-    for "Cos" put 7;`);
-
-
-if(mathOperation > 7 || mathOperation < 1 || mathOperation !== mathOperation) {
-    continue;
-}
-
-function notNanOperand (promptDesc) {
-    let result;
-    do {
-        result = +prompt(promptDesc)
-    } while (result !== result);
-    return result;
+function average(numbers) {
+    let sum = 0;
+    let average;
+    numbers.forEach(function(element) {
+    sum += element;
+    });
+    return average = Math.round(sum / student.marks.length);
+};
+    
+function median(numbers) {
+    let median;
+    let sortArr = numbers.sort((a, b) => a - b);
+    if (sortArr.length % 2 === 0) {
+    return median = ((sortArr[((sortArr.length / 2) - 2)] + sortArr[((sortArr.length / 2) - 1)]) / 2 );
+    } else {
+    return median = sortArr[Math.round((sortArr.length / 2) - 1)];
+    };
 };
 
-
-firstNumber = notNanOperand (mathOperation < 6 && mathOperation > 0 ? 'Please, enter your first number' : 'Please, enter your number');
-
-
-if (mathOperation < 6) {
-    secondNumber = notNanOperand('Please, enter your second number');
+function update(student) {
+    student.average = average(student.marks),
+    student.median = median(student.marks);
+    return student;
 };
 
-
-function sum (firstNumber, secondNumber) {
-    let result = firstNumber + secondNumber;
-    return result;
-}
-
-function diff (firstNumber, secondNumber) {
-    let result = firstNumber - secondNumber;
-    return result;
-}
-
-function mult (firstNumber, secondNumber) {
-    let result = firstNumber * secondNumber;
-    return result;
-}
-
-function div (firstNumber, secondNumber) {
-    let result = firstNumber / secondNumber;
-    return result;
-}
-
-function pow (firstNumber, secondNumber) {
-    let result = Math.pow(firstNumber, secondNumber);
-    return result;
-}
-
-function sin (firstNumber) {
-    let result = Math.sin(firstNumber);
-    return result;
-}
-
-function cos (firstNumber) {
-    let result = Math.cos(firstNumber);
-    return result;
-}
-
-switch (mathOperation) {
-    case 1:
-       result = sum(firstNumber, secondNumber);
-    break;
-    case 2: 
-        result = diff(firstNumber, secondNumber);
-    break;
-    case 3:
-        result = mult(firstNumber, secondNumber);
-    break;
-    case 4:
-        result = div(firstNumber, secondNumber);
-    break;
-    case 5:
-        result = pow(firstNumber, secondNumber);
-    break;
-    case 6:
-        result = sin(firstNumber);
-    break;
-    case 7:
-        result = cos(firstNumber);
-    break;
-    default: alert('Try again');
-        break;
+function newFields(list) {
+    list.forEach(student => {
+student = update(student)
+        });
+        return list
 };
+newFields(list);
 
-let operName;
-if (mathOperation === 1) {
-    operName = 'sum';
-} else if (mathOperation === 2) {
-    operName = 'diff';
-} else if (mathOperation === 3) {
-    operName = 'mult';
-} else if(mathOperation === 4) {
-    operName = 'div';
-} else if(mathOperation === 5) {
-    operName = 'pow';
-} else if(mathOperation === 6) {
-    operName = 'sin';
-} else {
-    operName = 'cos';
+function sortStudents(list) {
+    return list.sort((a, b) => a.average - b.average);
 };
+sortStudents(list)
+    list.push(update(studentsMock.getStudent()));    
 
-function resultMessage(operName, result) {
-    alert(`Operation ${operName} finished with result ${result}.`)
-};
-resultMessage(operName, result);
+console.table(list);
+console.log(list.map(e => `${e.name}  |  ${e.average}`).join('\n'));
+console.table(list.filter(e => e.average < 50));
 
-history.push(result);
-historyReverse = history;
-console.table(historyReverse.reverse(result));
 
-} while (confirm('Do You want to repeat?'));
+// ========================================= Alternative Code ==================================================
 
+// function average(list) {
+// list.forEach(student => {
+//     let sum = 0;
+// student.marks.forEach(function(element) {
+//     sum += element;
+// });
+// student.average = Math.round(sum / student.marks.length);
+// });
+// };
+// average(list);
+
+// function unsuccessfulStudents(list) {
+//     list.forEach(student => {
+//         if (student.average < 50) {
+//           student.unsuccessful = 'Unsuccesful'; 
+//         };
+//     });
+//     };
+//    unsuccessfulStudents(list);
+
+// function median(list) {
+//     let result = student.median;
+//     list.forEach(student => {
+//     let sortArr = student.marks.sort((a, b) => a - b);
+//     if (sortArr.length % 2 === 0) {
+//       student.median = ((sortArr[((sortArr.length / 2) - 2)] + sortArr[((sortArr.length / 2) - 1)]) / 2 );
+//     } else {
+//       student.median = sortArr[Math.round((sortArr.length / 2) - 1)];
+//     };
+// });
+//  return result;
+// };
+//    median(list);
+
+// function sortStudents(list) {
+//     return list.sort((a, b) => a.average - b.average);
+// };
+// sortStudents(list)
+//     list.push(update(studentsMock.getStudent()));    
+
+// console.table(list);
+// console.log(list.map(e => `${e.name}  |  ${e.average}`).join('\n'));
+// console.table(list.filter(e => e.average < 50));
