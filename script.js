@@ -49,8 +49,12 @@ function elementsArray(array, element) {
         do {
             elementsArray(array, element);
         } while (element <= array.length);
-        console.table(SelectionSort(array));
-        alert(SelectionSort(array));
+       
+        function display(arr) {
+            console.table(SelectionSort(arr)); 
+            alert(SelectionSort(arr));
+        }
+        display(array);
 
 
     } while (confirm('Do you want to repeat?'));
