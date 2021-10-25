@@ -1,3 +1,5 @@
+(() => {
+
 let number;
 const array = [];
 let element;
@@ -47,6 +49,10 @@ function elementsArray(array, element) {
         do {
             elementsArray(array, element);
         } while (element <= array.length);
-        console.table(SelectionSort(array)); 
+        console.table(SelectionSort(array));
+        alert(SelectionSort(array));
+
 
     } while (confirm('Do you want to repeat?'));
+}
+)()
