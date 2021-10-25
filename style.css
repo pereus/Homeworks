@@ -1,0 +1,39 @@
+body {
+    box-sizing: border-box;
+}
+
+#input-field {
+    outline: none;
+    height: 20px;
+    width: 300px;
+    border: 2px solid green;
+    font-weight: bold;
+}
+
+.btn {
+    height: 30px;
+    width: 100px;
+    border: 2px solid skyblue;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.btn-alarm {
+    background-color: red;
+}
+
+.btn-alarm:hover {
+    border-color: red;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.list-item {
+    display: block;
+}
+
+.strikethrough-text {
+    text-decoration: line-through;
+}

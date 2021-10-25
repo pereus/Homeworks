@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homework 9</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Homework 10</title>
     <script src="script.js" defer> </script>
 </head>
 <body>
     <input type="text" id="input-field" placeholder="Write something">
-    <button id="btn"> Click Here </button>
+    <button id="btn" class="btn"> Click Here </button>
+    <ul id="list" class="list"></ul>
+    <script type="text/template" id="template">
+        <label for="" class="list-item">
+        <input type="checkbox" class="checkbox">
+        <span>
+            {{contentEl}}
+        </span>
+        <button class="btn btn-alarm" id="btn-delete">
+            Delete
+        </button>
+    </label>
+    </script>
+    
 </body>
 </html>
